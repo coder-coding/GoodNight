@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-
+import { defineAsyncComponent } from "@vue/runtime-core";
 
 const routes = [
     {
@@ -17,7 +17,7 @@ const routes = [
             },
         ],
     },
-    // { path: '/about', component: About },
+    { path: '/', component: () => import( /* webpackChunkName: "index" */ '../views/Index.vue'), },
 ]
 
 const router = createRouter({

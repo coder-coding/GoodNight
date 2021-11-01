@@ -8,5 +8,11 @@ export default defineConfig({
   plugins: [vue(),
   Components({
     resolvers: [ElementPlusResolver()],
-  }),]
+  }),],
+  publicDir: false,
+  base: '/',
+  build: {
+    target: 'es2015',
+    // assetsDir: './',
+  },
 })

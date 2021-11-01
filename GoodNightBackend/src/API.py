@@ -1,4 +1,5 @@
 from flask import request
+from flask import send_file
 import json
 from . import db
 
@@ -9,7 +10,7 @@ currentMsg = {}
 def Api(app):
     @app.route('/')
     def hello():
-        return 'Hello, I\'m LZM!'
+        return 'hello'
 
     @app.route('/get/<project>')
     def getProjectMsg(project):
