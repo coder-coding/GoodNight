@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS [message];
+
+CREATE TABLE [message](
+  [project] TEXT NOT NULL, 
+  [type] TEXT NOT NULL DEFAULT text, 
+  [time] TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+  [level] INT NOT NULL DEFAULT 0, 
+  [context] TEXT);
+
