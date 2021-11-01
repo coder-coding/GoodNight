@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = "http://localhost:5000/"
+axios.defaults.baseURL = "http://localhost:9999/"
 
 export function GetProjectMsg(project, params) {
     return axios.get('get/' + project + '?start=' + params.start + '&end=' + params.end)
