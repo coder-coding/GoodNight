@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import Header from '../components/Header.vue';
+import MsgBox from '../components/MsgBox.vue'
 import { GetProjectMsg, UpdateProjectMsg } from '../Api/Api'
 import { dateFormat } from '../utils/utils'
 export default {
@@ -168,11 +170,6 @@ export default {
     }
   }
 }
-</script>
-
-<script setup>
-import Header from '../components/Header.vue';
-import MsgBox from '../components/MsgBox.vue'
 </script>
 
 <style>
