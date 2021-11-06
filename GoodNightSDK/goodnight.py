@@ -3,7 +3,6 @@ import requests
 import base64
 import os
 from PIL import Image
-import numpy as np
 
 
 class GN():
@@ -13,8 +12,9 @@ class GN():
         self.init()
         self.postUrl = self.baseUrl + self.project
 
-    def init(self, baseUrl="http://localhost:5000/post/"):
+    def init(self, baseUrl="http://23.105.196.211:9999/post/"):
         self.baseUrl = baseUrl
+        self.postUrl = self.baseUrl + self.project
 
     def info(self):
         return f'project: {self.project}'
@@ -67,16 +67,3 @@ class GN():
             "context": json.dumps({'msg': messages})
         }
         self.session.post(self.postUrl, json=send_json)
-
-
-def main():
-
-    gn = GN('Adv2')
-
-    img = Image.open('./Samoyed.jpg')
-    img = np.array(img)
-    gn.mix([('text', '图片1'), ('img', img), ('text', 'end...')])
-
-
-if __name__ == '__main__':
-    main()

@@ -81,4 +81,26 @@ def Api(app):
             resList.append({'name': r['project']})
         return {'data': resList}
 
+    @app.route('/level')
+    def level():
+        msgId = request.args["id"]
+        msgLevel = request.args["level"]
+        res = db.query_db('SELECT rowid,* FROM [message] where rowid = ?',
+                          [msgId],
+                          one=True)
+        # print('SELECT rowid,* FROM [message] where rowid = ' + msgId)
+        # print(res, list(res))
+        if res:
+            r = db.write_db('UPDATE message SET level = ? WHERE rowid = ? ',
+                            [msgLevel, msgId])
+            return {'success': True}
+        else:
+            return {'success': False}
+
+    @app.route('/delete')
+    def delete():
+        msgId = request.args["id"]
+        r = db.write_db('DELETE FROM message WHERE rowid = ?', [msgId])
+        return {'success': True}
+
     return app

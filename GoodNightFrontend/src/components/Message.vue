@@ -30,36 +30,30 @@
 </template>
 
 <script>
-import { toRefs } from '@vue/reactivity'
+
 export default {
     props: {
         msg: Object,
         index: Number
     },
-    setup(props) {
-
-        // console.log(props)
-        const { msg, index } = toRefs(props)
-        const levelColor = ['green', 'gray', 'red']
-
-        const textToHtml = (txt) => {
-            return txt.replaceAll('\n', '<br/>')
+    data() {
+        return {
+            selectMsg: this.msg.rowid,
+            levelColor: ['gray', 'green', 'red']
         }
-
-        const mixMsg = (data) => {
+    },
+    methods: {
+        textToHtml(txt) {
+            return txt.replaceAll('\n', '<br/>')
+        },
+        mixMsg(data) {
             // console.log("mixMsg -> ", data)
             const d = JSON.parse(data)
             // console.log(d)
             return d['msg']
-        }
+        },
 
-        return {
-            msg,
-            index,
-            levelColor,
-            textToHtml,
-            mixMsg
-        }
+
     }
 }
 </script>
@@ -117,4 +111,5 @@ export default {
     /* background-color: bisque; */
     background-color: whitesmoke;
 }
+
 </style>
